@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ project_name }}</title>
+    <style>
+        h2 { text-align: center; }
+        .group { font-style: italic; color: blue; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        table, th, td { border: 1px solid black; }
+        th { font-weight: bold; background-color: lightgray; }
+        td { text-align: center; }
+    </style>
+</head>
+<body>
+    <h1>{{ project_name }}</h1>
+    <p>Student: <strong>{{ student_name }}</strong>, Group: <span class="group">{{ group }}</span></p>
+
+    <h2>suppliers</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>supplier_id</th>
+                <th>company_name</th>
+                <th>contact_person</th>
+                <th>phone</th>
+                <th>account_number</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for supplier in suppliers %}
+            <tr>
+                <td>{{ supplier.supplier_id }}</td>
+                <td>{{ supplier.company_name }}</td>
+                <td>{{ supplier.contact_person }}</td>
+                <td>{{ supplier.phone }}</td>
+                <td>{{ supplier.account_number }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>materials</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>material_id</th>
+                <th>material_name</th>
+                <th>price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for material in materials %}
+            <tr>
+                <td>{{ material.material_id }}</td>
+                <td>{{ material.material_name }}</td>
+                <td>{{ material.price }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>deliveries</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>delivery_id</th>
+                <th>delivery_date</th>
+                <th>supplier_id</th>
+                <th>material_id</th>
+                <th>delivery_days</th>
+                <th>quantity</th> <!-- Corrected closing tag -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for delivery in deliveries %}
+            <tr>
+                <td>{{ delivery.delivery_id }}</td>
+                <td>{{ delivery.delivery_date }}</td>
+                <td>{{ delivery.supplier.supplier_id }}</td>
+                <td>{{ delivery.material.material_id }}</td>
+                <td>{{ delivery.delivery_days }}</td>
+                <td>{{ delivery.quantity }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
